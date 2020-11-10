@@ -9,12 +9,12 @@
 - symfony console make:entity
 - symfony console make:migration
 
-R�cup�rer la db :
+Récupérer la db :
 
 - symfony console doctrine:database:create
 - symfony console doctrine:migrations:migrate
 
-Cr�ation du controller :
+Création du controller :
 
 - symfony console make:controller
 - composer require symfony/twig-bundle
@@ -23,7 +23,7 @@ Start :
 
 - symfony server:start
 
-Fausses donn�es:
+Fausses données:
 
 - composer require orm-fixtures --dev
 - composer require fzaninotto/faker --dev
