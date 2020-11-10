@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\ContractTypeFixtures\ContractTypeFixtures;
 use App\Entity\Offer;
 use App\Repository\OfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
