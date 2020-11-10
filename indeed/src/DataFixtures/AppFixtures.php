@@ -6,6 +6,7 @@ use App\Entity\Offer;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\ContractTypeFixtures;
+use App\DataFixtures\ContractFixtures;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 
@@ -13,7 +14,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 {
     public function getDependencies()
     {
-        return [ContractTypeFixtures::class];
+        return [ContractTypeFixtures::class, ContractFixtures::class];
     }
     public function load(ObjectManager $manager)
     {
@@ -32,7 +33,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
             $contract = $this->getReference("contract" . rand(1, 3));
             $contractEnd = null;
 
-            if ($contract != "CDI")
+            if ($contract->getName() != "CDI")
                 $contractEnd = $faker->dateTimeBetween(new \DateTime(), '2022-01-01 00:00:00');
 
 
