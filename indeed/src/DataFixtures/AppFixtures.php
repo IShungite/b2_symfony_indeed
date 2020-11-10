@@ -5,10 +5,16 @@ namespace App\DataFixtures;
 use App\Entity\Offer;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\DataFixtures\ContractTypeFixtures;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function getDependencies()
+    {
+        return [ContractTypeFixtures::class];
+    }
     public function load(ObjectManager $manager)
     {
         // $product = new Product();
@@ -19,10 +25,13 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $offer = new Offer();
 
-            $contractType = $faker->randomElement($array = array('CDD', 'CDI', 'FREE'));
+
+            $contractType = $this->getReference("type" . rand(1, 2));
+
+            $contract = $faker->randomElement($array = array('CDD', 'CDI', 'FREE'));
             $contractEnd = null;
 
-            if ($contractType != "CDI")
+            if ($contract != "CDI")
                 $contractEnd = $faker->dateTimeBetween(new \DateTime(), '2022-01-01 00:00:00');
 
 
@@ -33,9 +42,9 @@ class AppFixtures extends Fixture
                 ->setCity($faker->city())
                 ->setCreationDate(new \DateTime())
                 ->setUpdateDate(new \DateTime())
-                ->setContract($contractType)
+                ->setContract($contract)
                 ->setContractEnd($contractEnd)
-                ->setContractType($faker->randomElement($array = array('temps plains', 'temps partiel')));
+                ->setContractType($contractType->getName());
 
             $manager->persist($offer);
         }
