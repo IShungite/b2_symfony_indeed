@@ -10,7 +10,7 @@ class ContractTypeFixtures extends Fixture
 {
     const TYPES = [
         'type1' => [
-            'name' => "temps plains"
+            'name' => "temps plein"
         ],
         'type2' => [
             'name' => "temps partiel"
