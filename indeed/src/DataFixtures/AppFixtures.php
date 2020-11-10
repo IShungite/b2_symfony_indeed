@@ -28,7 +28,8 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 
             $contractType = $this->getReference("type" . rand(1, 2));
 
-            $contract = $faker->randomElement($array = array('CDD', 'CDI', 'FREE'));
+
+            $contract = $this->getReference("contract" . rand(1, 3));
             $contractEnd = null;
 
             if ($contract != "CDI")
@@ -42,7 +43,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
                 ->setCity($faker->city())
                 ->setCreationDate(new \DateTime())
                 ->setUpdateDate(new \DateTime())
-                ->setContract($contract)
+                ->setContract($contract->getName())
                 ->setContractEnd($contractEnd)
                 ->setContractType($contractType->getName());
 
