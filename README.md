@@ -9,12 +9,12 @@
 - symfony console make:entity
 - symfony console make:migration
 
-Récupérer la db :
+Rï¿½cupï¿½rer la db :
 
 - symfony console doctrine:database:create
 - symfony console doctrine:migrations:migrate
 
-Création du controller :
+Crï¿½ation du controller :
 
 - symfony console make:controller
 - composer require symfony/twig-bundle
@@ -23,8 +23,40 @@ Start :
 
 - symfony server:start
 
-Fausses données:
+Fausses donnï¿½es:
 
 - composer require orm-fixtures --dev
 - composer require fzaninotto/faker --dev
 - symfony console doctrine:fixtures:load
+
+# ENCORE / YARN / SASS
+
+dans un powershell faire :
+
+npm install -g sass
+npm install -g yarn
+
+dans le projet faire :
+
+composer require symfony/webpack-encore-bundle
+yarn install
+
+le css se trouve dans indeed/assets/style
+aprÃ¨s avoir modifiÃ© faites :
+
+yarn encore dev
+yarn encore production
+
+ou le faire automatiquement Ã  chaque fois :
+
+yarn encore dev --watch
+
+Faire dans le terminal:
+
+yarn add sass-loader@^9.0.1 node-sass --dev
+
+(Faire les commandes dessous en adaptant la version de node-sass, pour nous :)
+
+npm uninstall node-sass
+
+npm install node-sass@4.14.1
