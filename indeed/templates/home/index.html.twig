@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			{% for offer in offers %}
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">{{offer.title}}</h5>
+							<p class="card-text">{{offer.description}}</p>
+
+							<p>Ville
+								{{offer.city}}</p>
+							<p>Code postal
+								{{offer.postalcode}}</p>
+							<p>Mise à jour
+								{{offer.updatedate|date("d/m/Y")}}</p>
+
+							<a href="/offer/{{offer.id}}" class="btn btn-primary">Voir l'offre</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+{% endblock %}
