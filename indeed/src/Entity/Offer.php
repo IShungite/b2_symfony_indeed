@@ -58,13 +58,13 @@ class Offer
     private $contract_end;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Contract::class, inversedBy="offer")
+     * @ORM\ManyToOne(targetEntity=Contract::class, inversedBy="offer", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $contract;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ContractType::class, inversedBy="offer")
+     * @ORM\ManyToOne(targetEntity=ContractType::class, inversedBy="offer", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $contract_type;
