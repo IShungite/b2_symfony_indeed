@@ -68,3 +68,7 @@ npm install node-sass@4.14.1
 # User
 
 - symfony console make:user
+
+# login Form
+
+- symfony console make:auth

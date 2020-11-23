@@ -10,6 +10,13 @@ security:
       # (i.e. Sodium when available).
       algorithm: auto
 
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: username
+
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,14 +24,10 @@ security:
     main:
       anonymous: true
       lazy: true
-# security:
-#   encoders:
-#     App\Entity\User:
-#       algorithm: auto
-
-#   providers:
-#     # used to reload user from session & other features (e.g. switch_user)
-#     app_user_provider:
-#       entity:
-#         class: App\Entity\User
-#         property: username
+      guard:
+          authenticators:
+              - App\Security\LoginFormAuthenticator
+      logout:
+          path: app_logout
+          # where to redirect after logout
+          # target: app_any_route
