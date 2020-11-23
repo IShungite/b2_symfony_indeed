@@ -44,9 +44,9 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
                 ->setCity($faker->city())
                 ->setCreationDate(new \DateTime())
                 ->setUpdateDate(new \DateTime())
-                ->setContract($contract->getName())
+                ->setContract($contract)
                 ->setContractEnd($contractEnd)
-                ->setContractType($contractType->getName());
+                ->setContractType($contractType);
 
             $manager->persist($offer);
         }
