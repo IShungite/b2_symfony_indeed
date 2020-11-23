@@ -60,3 +60,7 @@ yarn add sass-loader@^9.0.1 node-sass --dev
 npm uninstall node-sass
 
 npm install node-sass@4.14.1
+
+# User
+
+symfony console make:user
