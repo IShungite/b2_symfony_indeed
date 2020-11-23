@@ -6,6 +6,7 @@ use App\Entity\Offer;
 use App\Repository\OfferRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,8 +48,19 @@ class HomeController extends AbstractController
             ->add('postal_code')
             ->add('city')
             ->add('contract_end')
-            ->add('contract')
-            ->add('contract_type')
+            ->add('contract', ChoiceType::class, [
+                'choices'  => [
+                    'CDD' => 'CDD',
+                    'CDI' => 'CDI',
+                    'FREE' => 'FREE',
+                ],
+            ])
+            ->add('contract_type', ChoiceType::class, [
+                'choices'  => [
+                    'Temps plein' => 'Temps plein',
+                    'Temps partiel' => 'Temps partiel',
+                ],
+            ])
             ->add('submit', SubmitType::class)
             ->getForm();
 
