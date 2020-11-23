@@ -49,8 +49,6 @@ class SecurityController extends AbstractController
             $user->getPassword()
         ));
 
-        $user->setRoles(["ROLE_USER"]);
-
         if ($form->isSubmitted()) {
             $em->persist($user);
             $em->flush();
