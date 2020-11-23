@@ -25,9 +25,9 @@ security:
       anonymous: true
       lazy: true
       guard:
-          authenticators:
-              - App\Security\LoginFormAuthenticator
+        authenticators:
+          - App\Security\LoginFormAuthenticator
       logout:
-          path: app_logout
-          # where to redirect after logout
-          # target: app_any_route
+        path: app_logout
+        # where to redirect after logout
+        target: home
