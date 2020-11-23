@@ -58,12 +58,14 @@ class Offer
     private $contract_end;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Contract::class, inversedBy="offer")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $contract;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=ContractType::class, inversedBy="offer")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $contract_type;
 
@@ -168,24 +170,24 @@ class Offer
         return $this;
     }
 
-    public function getContract(): ?string
+    public function getContract(): ?Contract
     {
         return $this->contract;
     }
 
-    public function setContract(string $contract): self
+    public function setContract(?Contract $contract): self
     {
         $this->contract = $contract;
 
         return $this;
     }
 
-    public function getContractType(): ?string
+    public function getContractType(): ?ContractType
     {
         return $this->contract_type;
     }
 
-    public function setContractType(string $contract_type): self
+    public function setContractType(?ContractType $contract_type): self
     {
         $this->contract_type = $contract_type;
 
