@@ -16,4 +16,12 @@ class SecurityController extends AbstractController
             'controller_name' => 'SecurityController',
         ]);
     }
+
+    /**
+     * @Route("/register", name="register")
+     */
+    public function show()
+    {
+        return $this->render('security/register.html.twig');
+    }
 }
