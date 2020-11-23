@@ -61,6 +61,10 @@ npm uninstall node-sass
 
 npm install node-sass@4.14.1
 
+# Form
+
+- symfony console make:form
+
 # User
 
-symfony console make:user
+- symfony console make:user
