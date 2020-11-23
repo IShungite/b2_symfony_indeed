@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\ContractTypeFixtures\ContractTypeFixtures;
 use App\Entity\Offer;
 use App\Repository\OfferRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,9 +15,9 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function index(OfferRepository $ripo)
+    public function index(OfferRepository $repo)
     {
-        $offers = $ripo->findAll();
+        $offers = $repo->findAll();
 
         return $this->render('home/index.html.twig', [
             'offers' => $offers
