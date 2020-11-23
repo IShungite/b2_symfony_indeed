@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Offer;
+use App\Form\ContractType;
+use App\Form\ContractTypeType;
 use App\Repository\OfferRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,8 +49,8 @@ class HomeController extends AbstractController
             ->add('postal_code')
             ->add('city')
             ->add('contract_end')
-            ->add('contract')
-            ->add('contract_type')
+            ->add('contract', ContractType::class)
+            ->add('contract_type', ContractTypeType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
 
