@@ -61,4 +61,26 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/modifyOffer/{id}", name="modify_offer")
+     */
+    public function modifyOffer(Offer $offer, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(OfferType::class, $offer)
+            ->add('submit', SubmitType::class);
+
+        $offer->setUpdateDate(new \DateTime());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('home/modifyOffer.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

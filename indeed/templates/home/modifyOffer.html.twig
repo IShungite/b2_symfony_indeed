@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Modifier offre
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modifier l'offre</h1>
+		{{form_start(form)}}
+
+		{{ form(form) }}
+
+			{{form_end(form)}}
+		</div>
+
+
+	{% endblock %}
