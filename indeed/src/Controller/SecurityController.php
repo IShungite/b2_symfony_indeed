@@ -53,6 +53,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted()) {
             $em->persist($user);
             $em->flush();
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [
@@ -65,9 +66,9 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('home');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
