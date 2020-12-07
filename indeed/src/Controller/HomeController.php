@@ -37,7 +37,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/makeOffer", name="makeOffer")
+     * @Route("/makeOffer", name="make_offer")
      */
     public function makeOffer(Request $request, EntityManagerInterface $em)
     {
