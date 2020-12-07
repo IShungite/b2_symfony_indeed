@@ -27,6 +27,7 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/offer/{id}", name="show_post")
+     * @param Offer $offer
      */
     public function show(Offer $offer)
     {
@@ -38,7 +39,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/makeOffer", name="make_offer")
      */
-    public function makeOffer(Request $request, EntityManagerInterface $em)
+    public function makeOffer(Request $request)
     {
         $offer = new Offer();
 
@@ -51,6 +52,7 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $em->persist($offer);
             $em->flush();
             return $this->redirectToRoute('home');
@@ -64,8 +66,9 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/modifyOffer/{id}", name="modify_offer")
+     * @param Offer $offer
      */
-    public function modifyOffer(Offer $offer, Request $request, EntityManagerInterface $em)
+    public function modifyOffer(Offer $offer, Request $request)
     {
         $form = $this->createForm(OfferType::class, $offer)
             ->add('submit', SubmitType::class);
@@ -75,6 +78,7 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('home');
         }
@@ -82,5 +86,16 @@ class HomeController extends AbstractController
         return $this->render('home/modifyOffer.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+    /**
+     * @Route("/delete/{id}", name="delete")
+     * @param Offer $offer
+     */
+    public function deleteAction(Offer $offer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($offer);
+        $em->flush();
+        return $this->redirectToRoute('home');
     }
 }
