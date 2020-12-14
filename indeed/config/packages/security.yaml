@@ -32,5 +32,4 @@ security:
         # where to redirect after logout
         target: home
   access_control:
-    # require ROLE_ADMIN for /admin*
-    - { path: "^/makeOffer", roles: IS_AUTHENTICATED_FULLY }
+    - { path: "^/createOffer", roles: IS_AUTHENTICATED_FULLY }

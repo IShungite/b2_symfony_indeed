@@ -46,7 +46,8 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
                 ->setUpdateDate(new \DateTime())
                 ->setContract($contract)
                 ->setContractEnd($contractEnd)
-                ->setContractType($contractType);
+                ->setContractType($contractType)
+                ->setOwner(rand(1, 3));
 
             $manager->persist($offer);
         }

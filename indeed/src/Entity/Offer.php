@@ -69,6 +69,11 @@ class Offer
      */
     private $contract_type;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $owner;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -190,6 +195,18 @@ class Offer
     public function setContractType(?ContractType $contract_type): self
     {
         $this->contract_type = $contract_type;
+
+        return $this;
+    }
+
+    public function getOwner(): ?int
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(int $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }
