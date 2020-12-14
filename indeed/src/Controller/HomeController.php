@@ -71,6 +71,9 @@ class HomeController extends AbstractController
      */
     public function updateOffer(Offer $offer, Request $request)
     {
+        if ($this->getUser()->getId() != $offer->getOwner())
+            return $this->redirectToRoute('home'); 
+
         $form = $this->createForm(OfferType::class, $offer)
             ->add('submit', SubmitType::class);
 
@@ -94,6 +97,9 @@ class HomeController extends AbstractController
      */
     public function deleteOffer(Offer $offer)
     {
+        if ($this->getUser()->getId() != $offer->getOwner())
+            return $this->redirectToRoute('home'); 
+            
         $em = $this->getDoctrine()->getManager();
         $em->remove($offer);
         $em->flush();
