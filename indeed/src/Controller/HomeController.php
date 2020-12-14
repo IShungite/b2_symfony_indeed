@@ -36,9 +36,9 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/makeOffer", name="make_offer")
+     * @Route("/createOffer", name="create_offer")
      */
-    public function makeOffer(Request $request)
+    public function createOffer(Request $request)
     {
         $offer = new Offer();
 
@@ -57,7 +57,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('home/makeOffer.html.twig', [
+        return $this->render('home/createOffer.html.twig', [
             'form' => $form->createView()
         ]);
     }
