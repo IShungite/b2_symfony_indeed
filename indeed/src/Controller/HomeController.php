@@ -47,6 +47,9 @@ class HomeController extends AbstractController
 
         $offer->setCreationDate(new \DateTime());
         $offer->setUpdateDate(new \DateTime());
+        $user = $this->getUser();
+        $offer->setOwner($user->getId());
+
 
         $form->handleRequest($request);
 
