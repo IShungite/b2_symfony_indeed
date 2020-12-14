@@ -28,7 +28,7 @@ class HomeController extends AbstractController
      * @Route("/offer/{id}", name="show_offer")
      * @param Offer $offer
      */
-    public function show(Offer $offer)
+    public function showOffer(Offer $offer)
     {
         return $this->render('home/offer.html.twig', [
             'offer' => $offer
@@ -56,7 +56,6 @@ class HomeController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('home');
         }
-
 
         return $this->render('home/makeOffer.html.twig', [
             'form' => $form->createView()
