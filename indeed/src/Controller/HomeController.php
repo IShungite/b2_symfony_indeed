@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Offer;
 use App\Form\OfferType;
 use App\Repository\OfferRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +25,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/offer/{id}", name="show_post")
+     * @Route("/offer/{id}", name="show_offer")
      * @param Offer $offer
      */
     public function show(Offer $offer)
@@ -65,10 +64,10 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/modifyOffer/{id}", name="modify_offer")
+     * @Route("/offer/{id}/update", name="modify_offer")
      * @param Offer $offer
      */
-    public function modifyOffer(Offer $offer, Request $request)
+    public function updateOffer(Offer $offer, Request $request)
     {
         $form = $this->createForm(OfferType::class, $offer)
             ->add('submit', SubmitType::class);
@@ -83,15 +82,15 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('home/modifyOffer.html.twig', [
+        return $this->render('home/updateOffer.html.twig', [
             'form' => $form->createView()
         ]);
     }
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/offer/{id}/delete", name="delete_offer")
      * @param Offer $offer
      */
-    public function deleteAction(Offer $offer)
+    public function deleteOffer(Offer $offer)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($offer);
